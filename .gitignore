@@ -1,0 +1,8 @@
+# いらない
+node_modules
+.env
+.env.*
+.vscode
+/src/generated/prisma
+database
+dist

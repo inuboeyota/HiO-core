@@ -1,0 +1,35 @@
+{
+  "name": "HiO-core",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Discord.jsを使用したDiscordBotの基盤となるコード。pnpm製にしました。",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-watcher": "nodemon --watch src -e ts --exec ts-node src/main.ts",
+    "dev-deploy": "tsc -p . & cross-env NODE_ENV=development node dist/main.js",
+    "prd-deploy": "tsc -p . & cross-env NODE_ENV=production node dist/main.js",
+    "dev-prisma-migrate": "dotenv -e .env.development npx prisma migrate dev --name init",
+    "prd-prisma-migrate": "dotenv -e .env.production npx prisma migrate dev --name init",
+    "dev-prisma-generate": "dotenv -e .env.development npx prisma generate",
+    "prd-prisma-generate": "dotenv -e .env.production npx prisma generate",
+    "dev-prisma-studio": "dotenv -e .env.development npx prisma studio",
+    "prd-prisma-studio": "dotenv -e .env.production npx prisma studio"
+  },
+  "keywords": [],
+  "author": "yotawokuuinu",
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.1",
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "cross-env": "^10.1.0",
+    "prisma": "^6.18.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.18.0",
+    "discord.js": "^14.24.0",
+    "dotenv": "^17.2.3"
+  }
+}
