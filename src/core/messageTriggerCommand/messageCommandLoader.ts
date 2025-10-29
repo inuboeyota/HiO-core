@@ -38,8 +38,13 @@ export async function messageCommandLoader():Promise<TriggerClassPair> {
 
       // name と prefix プロパティを代入
       returnCmdPair[instance.prefix] = instance.name;
-      // aliasPrefix も代入
-      returnCmdPair[instance.aliasPrefix] = instance.name;
+
+      // aliasPrefixが存在するかを判定
+      if ("aliasPrefix" in instance){
+        // aliasPrefix も代入
+        returnCmdPair[instance.aliasPrefix] = instance.name;
+      }
+      
     }
   }
 

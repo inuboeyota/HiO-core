@@ -1,15 +1,76 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+
+// モデルの定義
+model poc_table {
+  id        Int     @id @default(autoincrement())
+  poc_name  String  @unique
+  status    String  @default("OFFLINE")
+}
+
+
+
+// Guilds
+// ギルド（サーバ）ごとの権限管理
+model Guilds {
+  id            Int     @id @default(autoincrement())
+  GuildDiscId   String  @unique
+  GuildName     String
+}
+
+// Users
+// ユーザごとの権限管理（ただし、基本的にはGuildでチェックをかけてから行う）
+model Users {
+  id            Int     @id @default(autoincrement())
+  UserDiscId    String  @unique
+  UserName      String 
+}
+
+// Roles
+// ロールごとの権限管理（ただし、基本的にはGuildでチェックをかけてから行う）
+model Roles {
+  id            Int     @id @default(autoincrement())
+  RoleDiscId    String  @unique
+  RoleName      String
+}
+
+// Channels
+// チャンネルごとの権限管理（Guildと合わせてチェックする）
+model Channels {
+  id            Int     @id @default(autoincrement())
+  ChannelDiscId String  @unique
+  ChannelName   String  
+}
+
+
+//---PERMISSION------------------------------------------------------------------------------------------//
+
+// MsgCommandPermission
+// メッセージをトリガとしたコマンドの実行権限を登録．存在すればその機能は許可されているものとする．
+
+model MsgCommandPermission {
+  id                Int @id @default(autoincrement())
+  GuildDiscId       String
+  ChannelDiscId     String?
+  UserDiscId        String?
+  RoleDiscId        String?
+  CommandId         String
+}
+
+// MsgCommand
+// メッセージをトリガとするコマンドのidと名前を格納
+model MsgCommand {
+  id                Int @id @default(autoincrement())
+  CommandName       String
+  ClassName         String
 }

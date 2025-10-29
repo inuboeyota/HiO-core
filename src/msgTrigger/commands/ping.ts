@@ -9,6 +9,7 @@ export default class ping implements MessageCommand {
 
   name:string = 'ping'
   prefix:string = '!ping'
+  
   aliasPrefix:string = '！ピン'
 
   execute = pingCmd
