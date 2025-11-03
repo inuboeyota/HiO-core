@@ -1,5 +1,5 @@
 import { Message, RoleManager } from "discord.js";
-import type { SentIdInfo } from "../types/util";
+import type { SentIdInfo } from "../types/util.js";
 
 /**
  * Util系：
