@@ -8,7 +8,7 @@ import type { TriggerClassPair } from "../../types/command.js";
  * prefixで実行するコマンドについて、それらを動的に読み込み、そのクラス名とトリガのペアを返却する
  * @returns クラス名とトリガのペアを返却する「トリガ：クラス名」
  */
-export async function messageCommandLoader():Promise<TriggerClassPair> {
+export default async function messageCommandNameTriggerFactory():Promise<TriggerClassPair> {
   // load対象のコードを取得する
 
   // ディレクトリを指定

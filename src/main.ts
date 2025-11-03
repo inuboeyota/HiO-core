@@ -1,11 +1,11 @@
 import { botClient } from './bot.js'
 import dotenv from 'dotenv'
 import path from 'path'
-import { messageCommandLoader } from './core/messageTriggerCommand/messageCommandLoader.js';
-import messageCommandCrawler from './core/messageTriggerCommand/messageCommandCrawler.js';
 import { Message } from 'discord.js';
 import { messageCommandFactory } from './core/messageTriggerCommand/messageCommandFactory.js';
 import { messageCommandPermission } from './core/messageTriggerCommand/messageCommandPermissions.js';
+import messageCommandNameInstanceFactory from './core/messageTriggerCommand/messageCommandNameInstanceFactory.js';
+import messageCommandNameTriggerFactory from './core/messageTriggerCommand/messageCommandNameTriggerFactory.js';
 
 // NODE_ENVを取得（デフォルトは'production'）
 const env = process.env.NODE_ENV || 'production';
@@ -15,8 +15,8 @@ console.log(`現在使用している環境は： .env.${env} です。`);
 
 
 //=変数を用意================================================================================================//
-const msgLoadedCommands = messageCommandLoader()
-const msgCrawledCommands = messageCommandCrawler()
+const msgNameTriggerPairs = messageCommandNameTriggerFactory()
+const msgNameInstancePairs = messageCommandNameInstanceFactory()
 //===========================================================================================================//
 
 
@@ -42,11 +42,11 @@ botClient.on('messageCreate', async (message: Message) => {
 	if (message.author.bot) return;
 
 	// permissionの判定を行い、実行可能性を判定する
-	const canExecute = messageCommandPermission(message, await msgLoadedCommands)
+	const canExecute = messageCommandPermission(message, await msgNameTriggerPairs)
 
 	// TODO: canExecuteで分岐する
 	// messageCommandの実行
-	messageCommandFactory(message, await msgLoadedCommands, await msgCrawledCommands)
+	messageCommandFactory(message, await msgNameTriggerPairs, await msgNameInstancePairs)
 
 })
 //===========================================================================================================//

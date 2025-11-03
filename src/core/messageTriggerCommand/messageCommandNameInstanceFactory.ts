@@ -8,7 +8,7 @@ import { pathToFileURL } from "url";
  * prefixで実行するコマンドについて、botの起動時に一度だけ、クラスをインスタンス化して保持しておく
  * @returns クラス名とクラスの実体のペアを返却する
  */
-export default async function messageCommandCrawler():Promise<Record<string,MessageCommand>>  {
+export default async function messageCommandNameInstanceFactory():Promise<Record<string,MessageCommand>>  {
   // ディレクトリを指定
   const msgDir = path.resolve(import.meta.dirname, '../../msgTrigger/commands/')
 

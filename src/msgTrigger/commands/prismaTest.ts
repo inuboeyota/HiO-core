@@ -21,5 +21,10 @@ async function prismaTestCmd(ctx: Message):Promise<void> {
 
   const test = await prismaInstance.poc_table.findUnique({where: { id: 1}})
 
-  ctx.reply(test!.poc_name)
+  if (!(test == null)) {
+    ctx.reply(test!.poc_name)
+  }
+  else {
+    ctx.reply("結果が見つかりませんでした。")
+  }
 }
