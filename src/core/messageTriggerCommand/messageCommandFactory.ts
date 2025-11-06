@@ -3,7 +3,7 @@ import type { ClassNameToInstancePair, MessageCommand, TriggerClassPair } from "
 
 /**
  * メッセージクリエイトファクトリー（動的にクラスを生成し、名前に応じてMessageCommandの実行を行う）
- * 言い訳：状態を持たないのでfunctionで実装している
+ * 言い訳：状態を持たないのでfunctionで実装している←？？？　これどういう意味？
  * @param messageString メッセージのトリガになる文言を入れる
  * @param loadedTargetCommand フォルダから読み込んだ、クラス名とクラスのトリガのペア
  * @param crawledCommandInstance フォルダから読み込んだ、クラスの実体
