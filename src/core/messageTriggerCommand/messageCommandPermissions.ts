@@ -16,6 +16,7 @@ export async function messageCommandPermission(message:Message, msgLoadedCommand
     // Utilを使用して、発言元の全てのID情報を取得する
     const sentIdInfo = await utilGetSentIdInfo(message)
     
+    
   }
 
   // 発言者の情報を取得する
