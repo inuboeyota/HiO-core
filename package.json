@@ -9,6 +9,10 @@
     "dev-watcher": "nodemon --watch src -e ts --exec ts-node src/main.ts",
     "dev-deploy": "tsc -p . & cross-env NODE_ENV=development node dist/main.js",
     "prd-deploy": "tsc -p . & cross-env NODE_ENV=production node dist/main.js",
+
+    "dev-prisma-reset": "dotenv -e .env.development npx prisma migrate reset",
+    "prd-prisma-reset": "dotenv -e .env.production npx prisma migrate reset",
+
     "dev-prisma-migrate": "dotenv -e .env.development npx prisma migrate dev --name init",
     "prd-prisma-migrate": "dotenv -e .env.production npx prisma migrate dev --name init",
     "dev-prisma-generate": "dotenv -e .env.development npx prisma generate",
