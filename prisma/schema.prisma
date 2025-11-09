@@ -60,7 +60,7 @@ model Channels {
 
 model MsgCommandPermission {
   id                Int @id @default(autoincrement())
-  CommandPrefixName       String
+  CommandClassName       String
   GuildDiscId       String
   ChannelDiscId     String?
   UserDiscId        String?

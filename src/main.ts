@@ -10,7 +10,9 @@ import messageCommandNameTriggerFactory from './core/messageTriggerCommand/messa
 // NODE_ENVを取得（デフォルトは'production'）
 const env = process.env.NODE_ENV || 'production';
 // 対応する.envファイルを読み込む
-dotenv.config({ path: path.resolve('./', `.env.${env}`) });
+dotenv.config({ path: path.resolve('./', `.env.${env}`),
+								override: true, });
+
 console.log(`現在使用している環境は： .env.${env} です。`);
 
 
@@ -42,11 +44,14 @@ botClient.on('messageCreate', async (message: Message) => {
 	if (message.author.bot) return;
 
 	// permissionの判定を行い、実行可能性を判定する
-	const canExecute = messageCommandPermission(message, await msgNameTriggerPairs)
+	const canExecute = await messageCommandPermission(message, await msgNameTriggerPairs)
+	console.log(canExecute); //debug
 
-	// TODO: canExecuteで分岐する
-	// messageCommandの実行
-	messageCommandFactory(message, await msgNameTriggerPairs, await msgNameInstancePairs)
+	// 実行不可の場合、エラーメッセージを吐いてreturn
+	if (canExecute) {
+		// messageCommandの実行
+		messageCommandFactory(message, await msgNameTriggerPairs, await msgNameInstancePairs)
+	}
 
 })
 //===========================================================================================================//
