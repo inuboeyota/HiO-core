@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import type { ClassNameToInstancePair, MessageCommand, TriggerClassPair } from "../../types/command.js";
+import type { ClassNameToInstancePair, MessageCommand, TriggerClassPair } from "../../types/messageTriggerCommandType.js";
 
 /**
  * メッセージクリエイトファクトリー（動的にクラスを生成し、名前に応じてMessageCommandの実行を行う）

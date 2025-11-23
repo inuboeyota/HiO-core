@@ -1,5 +1,5 @@
 import type { Message } from "discord.js";
-import type { MessageCommand } from "../../types/command.js";
+import type { MessageCommand } from "../../types/messageTriggerCommandType.js";
 import { PrismaClient } from "@prisma/client";
 
 /**

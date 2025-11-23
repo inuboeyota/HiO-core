@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, Message } from "discord.js";
-import type { MessageCommand } from "../../types/command.js";
+import type { MessageCommand } from "../../types/messageTriggerCommandType.js";
 
 
 /**

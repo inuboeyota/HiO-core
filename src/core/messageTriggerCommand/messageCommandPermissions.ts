@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import type { TriggerClassPair } from "../../types/command.js";
+import type { TriggerClassPair } from "../../types/messageTriggerCommandType.js";
 import { utilGetSentIdInfo } from "../../util/utilGetSentIdInfo.js";
 import type { SentIdInfo } from "../../types/util.js";
 import { prismaInstance } from "../prisma/prismaClient.js";

@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import type { MessageCommand } from "../../types/command.js";
+import type { MessageCommand } from "../../types/messageTriggerCommandType.js";
 import { pathToFileURL } from "url";
 
 

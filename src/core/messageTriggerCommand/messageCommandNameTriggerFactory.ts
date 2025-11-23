@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { fileURLToPath, pathToFileURL } from "url";
-import type { TriggerClassPair } from "../../types/command.js";
+import type { TriggerClassPair } from "../../types/messageTriggerCommandType.js";
 
 
 /**
